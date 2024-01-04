@@ -1,0 +1,1 @@
+# obsidianopener.nvim
