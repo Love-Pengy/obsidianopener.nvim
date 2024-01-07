@@ -17,7 +17,6 @@ local function stringParser(inStr)
     escapeString = string.gsub(escapeString, "%(", "\\%(")
     escapeString = string.gsub(escapeString, "%)", "\\%)")
     escapeString = string.gsub(escapeString, "%%", "\\%%")
-    --escapeString = string.gsub(escapeString, "%.", "\\%.")
     escapeString = string.gsub(escapeString, "%*", "\\%*")
     escapeString = string.gsub(escapeString, "%+", "\\%+")
     escapeString = string.gsub(escapeString, "%-", "\\%-")
@@ -48,7 +47,7 @@ end
 M.setup = function(opts)
     --local vault = vim.tbl_deep_extend('force', vault, opts)
     local vault = opts
-    vim.keymap.set("n", "<leader>o", require("lua/obsidianOpener/init").openObsidian)
+    vim.keymap.set("n", "<leader>o", require("obsidianOpener").openObsidian)
 end
 
 
