@@ -2,5 +2,8 @@
 
 
 
-https://github.com/Love-Pengy/obsidianopener.nvim/assets/132213413/2e1c3a17-2819-44fb-9c39-67dc3601aa7d
+
+
+https://github.com/Love-Pengy/obsidianopener.nvim/assets/132213413/b7773f2c-ca6c-4210-90d3-2b8851e8ae28
+
 
