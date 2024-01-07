@@ -31,11 +31,13 @@ M.openObsidian = function()
         vim.cmd(":echo 'Vault not specified'")
     else
         local filePath = stringParser(vim.fn.expand("%:t"))
-        --vim.cmd("vsplit | terminal")
+            --vim.cmd("vsplit | terminal")
         local runCommand = "open obsidian://open?vault=" .. vault .. "\\&file=" .. filePath 
-        --local command = ':!' .. runCommand 
-        --print(command)
+            --local command = ':!' .. runCommand 
+            --print(command)
         vim.fn.jobstart(runCommand)
+
+        end
     end
 end
     --vim.cmd(":bdelete!")
