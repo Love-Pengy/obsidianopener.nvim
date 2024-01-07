@@ -1,4 +1,7 @@
-local vault = { path = 'Development'}
+local M = {}
+
+local vault = ''
+
 
 function sleep (sleepSec)
     local sec = tonumber(os.clock() + sleepSec)
@@ -24,27 +27,29 @@ local function stringParser(inStr)
     return spaceString
 end
 
-local function openObsidian()
-    local filePath = stringParser(vim.fn.expand("%:t"))
-    --vim.cmd("vsplit | terminal")
-    local runCommand = "open obsidian://open?vault=" .. vault.path .. "\\&file=" .. filePath 
-    --local command = ':!' .. runCommand 
-    --print(command)
-    vim.fn.jobstart(runCommand)
-
+M.openObsidian = function()
+    if vault == nil then 
+        vim.cmd(":echo 'Vault not specified'")
+    else
+        local filePath = stringParser(vim.fn.expand("%:t"))
+        --vim.cmd("vsplit | terminal")
+        local runCommand = "open obsidian://open?vault=" .. vault .. "\\&file=" .. filePath 
+        --local command = ':!' .. runCommand 
+        --print(command)
+        vim.fn.jobstart(runCommand)
+    end
+end
     --vim.cmd(":bdelete!")
 --[[    print("disown")
     sleep(5)
     print("delete")
 ]]--
+
+M.setup = function(opts)
+    --local vault = vim.tbl_deep_extend('force', vault, opts)
+    local vault = opts
+    vim.keymap.set("n", "<leader>o", require("lua/obsidianOpener/init").openObsidian)
 end
 
-local function setup(opts)
-    local vault = vim.tbl_deep_extend('force', vault, opts)
-end
 
---vim.keymap.set("n", "<leader>o", require("lua/obsidianOpener/init").openObsidian())
-
-return {
-    openObsidian = openObsidian
-}
+return M
