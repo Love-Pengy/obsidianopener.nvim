@@ -26,6 +26,11 @@ local function stringParser(inStr)
     return spaceString
 end
 
+M.setup = function(opts)
+    local vault = opts
+    vim.keymap.set("n", "<leader>o", require("obsidianOpener").openObsidian)
+end
+
 M.openObsidian = function()
     if vault == nil then 
         vim.cmd(":echo 'Vault not specified'")
@@ -36,12 +41,7 @@ M.openObsidian = function()
 
         end
     end
-end
 
-M.setup = function(opts)
-    local vault = opts
-    vim.keymap.set("n", "<leader>o", require("obsidianOpener").openObsidian)
-end
 
 
 return M
